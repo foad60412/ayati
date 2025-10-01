@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <link rel="icon" type="image/png" sizes="48x48" href="/icons/logo-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/logo-180.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#0b1c3d">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#05070b">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>نور آية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <canvas id="stars" class="stars" aria-hidden="true"></canvas>
+
+  <main class="wrap">
+    <header class="topbar">
+      <!-- شعار بسيط: هلال ونجمة -->
+<!-- شعار: قمر (هلال) مع نجمتين -->
+<svg class="logo" viewBox="0 0 64 64" aria-label="شعار نور آية" role="img">
+  <defs>
+    <!-- تدرّج القمر -->
+    <radialGradient id="gMoon" cx="35%" cy="35%" r="70%">
+      <stop offset="0%"  stop-color="#7ef9e6"/>
+      <stop offset="100%" stop-color="#00bda5"/>
+    </radialGradient>
+    <!-- قناع لصناعة الهلال -->
+    <mask id="mCrescent">
+      <rect width="64" height="64" fill="white"/>
+      <!-- قرص ثانٍ يحذف جزءًا ليظهر الهلال -->
+      <circle cx="40" cy="26" r="18" fill="black"/>
+    </mask>
+  </defs>
+
+  <!-- قرص القمر الأساسي -->
+  <circle cx="28" cy="34" r="18" fill="url(#gMoon)" mask="url(#mCrescent)"/>
+
+  <!-- حافة مضيئة خفيفة للهلال -->
+    <path d="M12 34a16 16 0 0 0 28 11.2A18 18 0 0 1 20 18.8 16 16 0 0 0 12 34z"
+         fill="none" stroke="#aaf5ea" stroke-opacity=".6" stroke-width="1.2"/>
+
+  <!-- نجمتان صغيرتان -->
+      <circle cx="47" cy="16" r="2.2" fill="#fff"/>
+      <circle cx="54" cy="26" r="1.4" fill="#cfeff0"/>
+    </svg>
+
+      <h1>نور آية</h1>
+      <p class="subtitle">آية عشوائية بصوت وتنسيق مريح</p>
+    </header>
+
+    <section class="card verse-card">
+      <div id="verse" class="verse">…</div>
+      <div id="ref" class="ref"></div>
+    </section>
+
+    <div class="audio-shell" role="group" aria-label="مشغّل الصوت">
+      <button id="playBtn" class="icon-btn" aria-label="تشغيل">⏵</button>
+      <div class="bar" id="bar" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+        <div id="prog" class="prog"></div>
+      </div>
+      <div id="time" class="time">00:00 / 00:00</div>
+      <audio id="player" preload="metadata" hidden></audio>
+    </div>
+
+    <div class="actions">
+      <button id="btn-new" class="btn primary">آية أخرى</button>
+      <button id="btn-share" class="btn">شارك</button>
+    </div>
+
+    <section class="a2hs">
+      <button id="btn-install-android" class="btn success" hidden>تثبيت على Android</button>
+      <div id="ios-card" class="ios-card" hidden>
+        <h3>تثبيت على iPhone</h3>
+        <ol>
+          <li>افتح في <b>Safari</b>.</li>
+          <li>زر <b>المشاركة</b>.</li>
+          <li><b>Add to Home Screen</b> ثم <b>Add</b>.</li>
+        </ol>
+      </div>
+    </section>
+
+    <p class="hint">يمكن إضافة الموقع للشاشة الرئيسية ليعمل كتطبيق.</p>
+  </main>
+
+  <!-- نافذة مشاركة بديلة -->
+  <dialog id="shareDlg">
+    <h3>شارك الرابط</h3>
+    <p class="share-url" id="shareUrl"></p>
+    <div class="dialog-actions">
+      <button id="copyBtn" class="btn primary">نسخ</button>
+      <button id="closeShare" class="btn">إغلاق</button>
+    </div>
+  </dialog>
+
+  <script src="/app.js"></script>
+  <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');</script>
+</body>
+</html>

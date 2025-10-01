@@ -1,0 +1,193 @@
+:root {
+  --bg:#05070b; 
+  --fg:#ffffff;
+  --glass:rgba(255,255,255,.06); 
+  --border:rgba(255,255,255,.14);
+  --accent:#000000; 
+  --accent2:#4dc3ff;
+}
+
+/* الجسم والخلفية */
+html, body { 
+  height: 100%; 
+  margin: 0; 
+}
+body {
+  color: var(--fg);
+  font-family: system-ui,"Segoe UI",Tahoma,Arial;
+  background: linear-gradient(to bottom, #2e2e30 0%, #282c6b 50%, #0a089c 100%);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* اللوحة الخاصة بالنجوم */
+.stars {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+}
+
+/* المحتوى */
+.wrap {
+  position: relative; 
+  z-index: 1; 
+  width: min(860px,94%); 
+  padding: 34px 26px; 
+  margin-inline: auto;
+}
+
+/* رأس */
+.topbar {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: 8px; 
+  margin-bottom: 22px;
+}
+.logo { width: 80px; height: 80px; }
+.topbar h1 { margin: 6px 0 0; font-size: 30px; letter-spacing: .3px }
+.subtitle { opacity: .8; margin: 4px 0 0; font-size: 14px }
+
+/* بطاقة الآية */
+.card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 18px; 
+  padding: 28px; 
+  margin-bottom: 22px;
+  box-shadow: 0 20px 48px rgba(0,0,0,.45)
+}
+.verse {
+  font-family:"Amiri",serif; 
+  font-size:32px; 
+  line-height:2.1; 
+  margin:6px 0 14px; 
+  direction:rtl;
+}
+.ref {
+  opacity:.9; 
+  font-size:15px; 
+  display:inline-block; 
+  padding:8px 12px;
+  border-radius:12px; 
+  border:1px solid rgba(255,255,255,.12); 
+  background:rgba(255,255,255,.07)
+}
+
+/* مشغل الصوت */
+.audio-shell {
+  display: grid; 
+  grid-template-columns: auto 1fr auto; 
+  align-items: center; 
+  gap: 16px;
+  background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border: 1px solid var(--border); 
+  border-radius: 16px; 
+  padding: 14px; 
+  margin: 20px 0 16px
+}
+.icon-btn {
+  width: 50px; height: 50px; 
+  border-radius: 50%; 
+  border: 0; cursor: pointer;
+  background: radial-gradient(circle at 35% 30%, #252525, #000000); 
+  color: #fff; 
+  font-size: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,.35)
+}
+.bar {
+  height: 14px; 
+  background: rgba(255,255,255,.18); 
+  border-radius: 999px; 
+  position: relative; 
+  overflow: hidden
+}
+.prog {
+  position: absolute; 
+  inset: 0 auto 0 0; 
+  width: 0%; 
+  background: linear-gradient(90deg,var(--accent),var(--accent2))
+}
+.time {
+  font-variant-numeric: tabular-nums; 
+  font-size: 15px; 
+  opacity:.95; 
+  min-width:120px; 
+  text-align:center
+}
+
+/* أزرار */
+.actions {
+  display:flex; 
+  gap:16px; 
+  justify-content:center; 
+  margin:18px 0 12px
+}
+.btn {
+  padding:12px 18px; 
+  border:0; 
+  border-radius:12px; 
+  background:#1b2a4d; 
+  color:var(--fg);
+  font-size:16px; 
+  cursor:pointer; 
+  transition:transform .05s ease, filter .15s ease; 
+  box-shadow:0 6px 18px rgba(0,0,0,.25)
+}
+.btn:hover{filter:brightness(1.08)}
+.btn:active{transform:translateY(1px)}
+.primary{background:linear-gradient(135deg,#2549a8,#3b64d6)}
+.success{background:linear-gradient(135deg,#1b8d64,#22a377)}
+
+/* A2HS */
+.a2hs{margin-top:14px; display:flex; gap:14px; align-items:flex-start; flex-wrap:wrap}
+.ios-card{
+  background:var(--glass); 
+  border:1px solid var(--border); 
+  border-radius:14px;
+  padding:16px 18px; 
+  width:340px; 
+  box-shadow:0 12px 28px rgba(0,0,0,.3)
+}
+.ios-card h3{margin:0 0 10px; font-size:18px}
+.ios-card ol{margin:0; padding-inline-start:20px; line-height:1.8; font-size:14px}
+
+.hint{opacity:.75; font-size:14px; margin-top:14px; text-align:center}
+
+/* نافذة المشاركة */
+dialog{
+  border:1px solid var(--border); 
+  background:#0e1a39; 
+  color:var(--fg); 
+  border-radius:14px; 
+  padding:18px 20px; 
+  max-width:520px
+}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+.share-url{
+  word-break:break-word; 
+  background:rgba(255,255,255,.07); 
+  padding:10px 12px; 
+  border-radius:10px; 
+  border:1px solid rgba(255,255,255,.12)
+}
+.dialog-actions{
+  display:flex; 
+  gap:10px; 
+  justify-content:flex-end; 
+  margin-top:12px
+}
+
+/* موبايل */
+@media (max-width:560px){
+  .wrap{padding:22px 16px}
+  .verse{font-size:26px}
+  .topbar h1{font-size:24px}
+  .ios-card{width:100%}
+}
+
+/* تخصيص شعار الهلال */
+.logo stop[offset="100%"]{ stop-color:#e42828; }

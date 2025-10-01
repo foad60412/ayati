@@ -1,0 +1,38 @@
+:root{--bg:#0b132b;--fg:#e6ecf5;--sub:#b7c3d9;--border:rgba(255,255,255,.12);--accent:#00e6c7}
+*{box-sizing:border-box}html,body{margin:0;height:100%}
+body{background:radial-gradient(1200px 600px at 50% -10%, #162245 0%, #0b132b 60%);color:var(--fg);font-family:system-ui,"Segoe UI",Tahoma,Arial}
+
+.topbar{position:sticky;top:0;z-index:10;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-bottom:1px solid var(--border);backdrop-filter:saturate(140%) blur(6px);background:rgba(11,19,43,.7)}
+.topbar h1{margin:0;font-size:18px}
+.controls{display:flex;gap:10px;align-items:center}
+.btn{padding:10px 14px;border:1px solid var(--border);border-radius:10px;background:#1b2a4d;color:var(--fg);cursor:pointer;font-size:14px}
+.btn.ghost{background:transparent}
+
+/* segmented control */
+.seg{display:flex;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:999px;padding:4px}
+.seg-btn{border:0;background:transparent;color:var(--fg);padding:8px 12px;border-radius:999px;cursor:pointer;font-size:14px}
+.seg-btn.active{background:linear-gradient(135deg,#2549a8,#3b64d6)}
+
+.wrap{width:min(1100px,96%);margin:16px auto;display:grid;gap:16px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,.05), transparent);border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:0 12px 28px rgba(0,0,0,.25)}
+.kpi{display:flex;flex-direction:column;gap:6px}
+.kpi-title{font-size:12px;color:var(--sub)}
+.kpi-value{font-size:26px;font-weight:700}
+
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;min-width:680px}
+thead th{position:sticky;top:0;background:#0e1a39;color:var(--sub);font-weight:600}
+th,td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:center}
+tbody tr:hover{background:rgba(255,255,255,.03)}
+.sum td{font-weight:700}
+h2{margin:0 0 10px 0;font-size:16px}
+
+/* responsive */
+@media (max-width:760px){.cards{grid-template-columns:1fr 1fr}.kpi-value{font-size:22px}}
+@media (max-width:420px){
+  .controls{gap:6px}
+  .cards{grid-template-columns:1fr}
+  .btn{padding:9px 12px}
+  .seg-btn{padding:8px 10px;font-size:13px}
+}

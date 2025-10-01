@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>لوحة التحكم • نور آية</title>
+  <link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>لوحة التحكم</h1>
+    <div class="controls">
+      <div class="seg" id="rangeSeg" aria-label="المدة">
+        <button data-range="1"  class="seg-btn active">اليوم</button>
+        <button data-range="7"  class="seg-btn">7 أيام</button>
+        <button data-range="14" class="seg-btn">14 يوم</button>
+        <button data-range="30" class="seg-btn">30 يوم</button>
+      </div>
+      <button id="refresh" class="btn">تحديث</button>
+      <button id="export" class="btn ghost">تصدير CSV</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="cards">
+      <div class="card kpi"><div class="kpi-title">الزوار (اليوم)</div><div id="kpi-visitors" class="kpi-value">0</div></div>
+      <div class="card kpi"><div class="kpi-title">آيات مُقدَّمة (اليوم)</div><div id="kpi-served" class="kpi-value">0</div></div>
+      <div class="card kpi"><div class="kpi-title">تشغيلات (اليوم)</div><div id="kpi-plays" class="kpi-value">0</div></div>
+      <div class="card kpi"><div class="kpi-title">مشاركات (اليوم)</div><div id="kpi-shares" class="kpi-value">0</div></div>
+    </section>
+
+    <section class="card">
+      <h2>الإحصاءات حسب اليوم</h2>
+      <div class="table-wrap">
+        <table id="tbl">
+          <thead>
+            <tr><th>اليوم</th><th>الزوار</th><th>الآيات</th><th>التشغيلات</th><th>المشاركات</th><th>معدل تشغيل/زائر</th></tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr class="sum">
+              <td>الإجمالي</td><td id="sum-visitors">0</td><td id="sum-served">0</td>
+              <td id="sum-plays">0</td><td id="sum-shares">0</td><td id="sum-rate">0</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="/admin.js"></script>
+</body>
+</html>
